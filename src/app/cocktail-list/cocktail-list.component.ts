@@ -13,8 +13,16 @@ export class CocktailListComponent implements OnInit {
 
   cocktails: Cocktail[] = []
 
+  // ngOnInit(): void {
+  //   this.cocktails = this.cocktailService.getCocktails()
+  // }
+
   ngOnInit(): void {
-    this.cocktails = this.cocktailService.getCocktails()
+    this.cocktailService.getCocktails().subscribe(cocktailsFromJsonFile => {
+      this.cocktails = cocktailsFromJsonFile;
+      console.log("cocktails", this.cocktails)
+    });
   }
+
 
 }
